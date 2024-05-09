@@ -17,22 +17,29 @@ from langchain.chains.retrieval_qa.base import (RetrievalQA,
                                                 StuffDocumentsChain,
                                                 VectorDBQA)
 
-model = AzureChatOpenAI(
-    api_key="989bb2fa71594e5d8b4b8ee0ab749d0e",
-    api_version="2024-03-01-preview",
-    azure_endpoint="https://jarinachat.openai.azure.com",
-    model="jarinagpt-35-turbo",
-    temperature=0.6,
+
+api_key =  os.getenv('AZURE_API_KEY')
+deployment_embed = os.getenv('AZURE_ADA')
+deployment_chat = os.getenv('AZURE_JARINA')
+api_version = os.getenv('AZURE_API_VERSION')
+azure_endpoint = os.getenv('AZURE_API_ENDPOINT')
+
+llm = AzureChatOpenAI(
+    api_key=api_key,
+    api_version=api_version,
+    azure_endpoint=azure_endpoint,
+    model=deployment_chat,
+    temperature=0.1,
     max_tokens=2048,
     streaming=False,
 )
 
-embeddings = AzureOpenAIEmbeddings(
-    api_key="989bb2fa71594e5d8b4b8ee0ab749d0e",
-    api_version="2024-03-01-preview",
-    azure_endpoint="https://jarinachat.openai.azure.com",
-    model="jarina-ada",
 
+embeddings = AzureOpenAIEmbeddings(
+    api_key=api_key,
+    api_version=api_version,
+    azure_endpoint=azure_endpoint,
+    model=deployment_embed,
 )
 
 # Load output from gpt crawler
