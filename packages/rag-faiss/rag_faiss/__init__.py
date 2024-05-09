@@ -1,3 +1,3 @@
-from rag_chroma.chain import chain
+from rag_faiss.chain import chain
 
 __all__ = ["chain"]
