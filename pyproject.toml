@@ -13,7 +13,7 @@ python = "^3.8.1,<3.13"
 uvicorn = "^0.23.2"
 langserve = {extras = ["server"], version = ">=0.0.30"}
 pydantic = "1.10.15"
-rag-chroma = {path = "packages/rag-chroma", develop = true}
+rag-faiss = {path = "packages/rag-faiss", develop = true}
 
 
 [tool.poetry.group.dev.dependencies]

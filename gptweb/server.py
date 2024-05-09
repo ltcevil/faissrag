@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from langserve import add_routes
-from rag_chroma import chain as rag_gpt_crawler
+from rag_faiss import chain as rag_gpt_crawler
 
 app = FastAPI()
 

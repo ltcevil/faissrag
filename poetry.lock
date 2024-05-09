@@ -1550,11 +1550,11 @@ files = [
 ]
 
 [[package]]
-name = "rag-chroma"
+name = "rag-faiss"
 version = "0.1.0"
 description = "RAG using Chroma"
 optional = false
-python-versions = ">=3.8.1,<3.13"
+python-versions = "^3.8.1,<3.13"
 files = []
 develop = true
 
@@ -1571,7 +1571,7 @@ watchdog = "^4.0.0"
 
 [package.source]
 type = "directory"
-url = "packages/rag-chroma"
+url = "packages/rag-faiss"
 
 [[package]]
 name = "referencing"
@@ -2411,4 +2411,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.1,<3.13"
-content-hash = "ebb2ae1fc27a918e9c1a4cda03abeee135c080ba0383f9fc688e6a46f12ab971"
+content-hash = "017ec7ca6840cd31ebaa19096345f4c614778af5bf8d83874933a31c061780a4"

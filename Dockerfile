@@ -8,7 +8,7 @@ RUN poetry config virtualenvs.create false
 
 WORKDIR /code
 
-COPY ./pyproject.toml ./README.md ./poetry.lock* ./
+COPY ./start.sh ./supervisord.conf ./pyproject.toml ./README.md ./poetry.lock* ./
 
 COPY ./package[s] ./packages
 
@@ -20,4 +20,4 @@ RUN poetry install --no-interaction --no-ansi
 
 EXPOSE 8001
 
-CMD exec uvicorn app.server:app --host 0.0.0.0 --port 8001
+CMD exec uvicorn app.server:gptweb --host 0.0.0.0 --port 8001
