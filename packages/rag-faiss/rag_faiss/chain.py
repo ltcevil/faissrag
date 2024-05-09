@@ -83,7 +83,7 @@ prompt = ChatPromptTemplate.from_template(template)
 
 hun = "answers are expected to be in Hungarian"
 qa_chain = RetrievalQA.from_chain_type(
-    model,
+    llm,
     retriever=db.as_retriever(),
     chain_type_kwargs={"prompt": prompt + hun}
 )
@@ -91,7 +91,7 @@ qa_chain = RetrievalQA.from_chain_type(
 # RAG chain
 chain = (
     RunnableParallel({"context": db.as_retriever(), "question": RunnablePassthrough()})
-    | prompt
+    | llm
     | model
     | StrOutputParser()
 )
