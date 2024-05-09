@@ -15,8 +15,6 @@ langserve = {extras = ["server"], version = ">=0.0.30"}
 pydantic = "1.10.15"
 rag-faiss = {path = "packages/rag-faiss", develop = true}
 
-[tool.poetry.package]
-include = ["co/**/*.py"]
 
 [tool.poetry.group.dev.dependencies]
 langchain-cli = "^0.0.21"
