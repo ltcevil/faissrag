@@ -91,8 +91,8 @@ qa_chain = RetrievalQA.from_chain_type(
 # RAG chain
 chain = (
     RunnableParallel({"context": db.as_retriever(), "question": RunnablePassthrough()})
+    | prompt
     | llm
-    | model
     | StrOutputParser()
 )
 
