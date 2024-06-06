@@ -68,8 +68,23 @@ all_splits = text_splitter.split_documents(docs)
 current_datetime = datetime.now().strftime("%Y-%m-%d-%H")
 index_file = f"/code/faiss/{current_datetime}.faiss"
 
+
+# Az összes FAISS index fájl lekérése
+index_files = sorted(Path("/code/faiss").glob("*.faiss"))
+
+if index_files:
+    # A legújabb FAISS index fájl betöltése
+    latest_index_file = index_files[-1]
+    db = FAISS.load_local(latest_index_file, embeddings)
+else:
+    # Ha nincs FAISS index fájl, hozz létre egy újat
+    db = FAISS.from_documents(documents=all_splits, embedding=embeddings, distance_strategy=DistanceStrategy.COSINE)
+    current_datetime = datetime.now().strftime("%Y-%m-%d-%H")
+    index_file = f"/code/faiss/{current_datetime}.faiss"
+    db.save_local(index_file)
+
 # Create FAISS vectorstore from documents and embeddings
-db = FAISS.from_documents(documents=all_splits, embedding=embeddings, normalize_L2=True, distance_strategy=DistanceStrategy.COSINE)
+db = FAISS.from_documents(documents=all_splits, embedding=embeddings, distance_strategy=DistanceStrategy.COSINE)
 db.save_local(index_file)
 
 # RAG prompt
