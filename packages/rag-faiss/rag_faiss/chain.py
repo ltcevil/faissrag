@@ -28,7 +28,7 @@ llm = AzureChatOpenAI(
     api_version=api_version,
     azure_endpoint=azure_endpoint,
     model=deployment_chat,
-    temperature=0.1,
+    temperature=0.3,
     max_tokens=2048,
     streaming=False,
 )
