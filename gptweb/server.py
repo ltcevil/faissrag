@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, BackgroundTasks
 from fastapi.responses import RedirectResponse
 from langserve import add_routes
 from rag_faiss import chain as rag_gpt_crawler
