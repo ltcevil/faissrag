@@ -1,9 +1,13 @@
 import json
 import os
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
 
 from flask_restx import Model
+
+from langchain.chains.retrieval_qa.base import (RetrievalQA,
+                                                StuffDocumentsChain,
+                                                VectorDBQA)
 from langchain_community.vectorstores.faiss import FAISS, DistanceStrategy
 from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
@@ -12,11 +16,6 @@ from langchain_core.pydantic_v1 import BaseModel
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-
-from langchain.chains.retrieval_qa.base import (RetrievalQA,
-                                                StuffDocumentsChain,
-                                                VectorDBQA)
-
 
 api_key =  os.getenv('AZURE_API_KEY')
 deployment_embed = os.getenv('AZURE_ADA')
@@ -43,7 +42,7 @@ embeddings = AzureOpenAIEmbeddings(
 )
 
 # Load output from gpt crawler
-path_to_gptcrawler = "/code/data/output-1.json"
+path_to_gptcrawler = "/code/data/output-1-1.json"
 
 
 if os.path.exists(path_to_gptcrawler) and os.path.getsize(path_to_gptcrawler) > 0:
