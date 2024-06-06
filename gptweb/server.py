@@ -16,9 +16,9 @@ async def redirect_root_to_docs():
 add_routes(app, rag_gpt_crawler, path="/rag")
 
 
-@app.post("/generate-embeddings")
+@app.post("/gen")
 async def generate_embeddings_endpoint(background_tasks: BackgroundTasks):
-    background_tasks.add_task(embeddings.genembeddings)
+    background_tasks.add_task(embeddings)
     return {"message": "Embedding generation started in the background"}
 
 
